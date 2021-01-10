@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculator</title>
+    <style>
+        .container{
+            display: grid;
+            margin: auto;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            grid-gap: 4px;
+            background-color: rgb(0, 0, 0);
+            padding: 4px;
+            max-width: 250px;
+        }
+        .item{
+            background-color: rgb(150, 150, 150);
+            color: white;
+            padding: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            text-shadow: 1px 1px 1px black;
+        }
+        .item:hover{
+            background-color: rgb(130, 130, 130);
+        }
+        form{
+            max-width: 100%;
+        }
+        input{
+            width: 246px;
+            height: 40px;
+            border: none;
+            font-size: 30px;
+            outline: none;
+            text-align: right;
+        }
+        .input{
+            grid-column: 1/-1;
+            padding: 0;
+        }
+        .clean{
+            grid-column: 1/3;
+            background-color: rgb(100, 100, 100);
+        }
+        .clean:hover{
+            background-color: rgb(80, 80, 80)
+        }
+        .back{
+            grid-column: 3/-1;
+        }
+        .equal{
+            grid-column: 4;
+            grid-row: 6/8;
+            background-color: rgb(100, 100, 100);
+        }
+        .equal:hover{
+            background-color: rgb(80, 80, 80)
+        }
+        .zero{
+            grid-column: 1/3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="item input">
+            <form name="form">
+                <input id="x" type="text" name="textview" readonly />
+            </form>
+        </div>
+        <div class="item clean" onclick="clean()">C</div>
+        <div class="item back" onclick="back()">&larr;</div>
+        <div class="item" onclick="insert('+')">+</div>
+        <div class="item" onclick="insert('-')">-</div>
+        <div class="item" onclick="insert('*')">&times;</div>
+        <div class="item" onclick="insert('/')">&divide;</div>
+        <div class="item" onclick="insert('7')">7</div>
+        <div class="item" onclick="insert('8')">8</div>
+        <div class="item" onclick="insert('9')">9</div>
+        <div class="item" onclick="insert('(')">(</div>
+        <div class="item" onclick="insert('4')">4</div>
+        <div class="item" onclick="insert('5')">5</div>
+        <div class="item" onclick="insert('6')">6</div>
+        <div class="item" onclick="insert(')')">)</div>
+        <div class="item" onclick="insert('1')">1</div>
+        <div class="item" onclick="insert('2')">2</div>
+        <div class="item" onclick="insert('3')">3</div>
+        <div class="item equal" onclick="equal()">=</div>
+        <div class="item zero" onclick="insert('0')">0</div>
+        <div class="item" onclick="insert('.')">.</div>
+    </div>
+    <script>
+        function insert(num){
+            document.form.textview.value = document.form.textview.value + num;
+        }
+        function clean(){
+            document.form.textview.value = "";
+        }
+        function back(){
+            var exp = document.form.textview.value;
+            document.form.textview.value = exp.substring(0, exp.length - 1);
+        }
+        function equal(){
+            var exp = document.form.textview.value;
+            if(exp){
+                document.form.textview.value = eval(exp);
+            }
+        }
+    </script>
+</body>
+</html>
