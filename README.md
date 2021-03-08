@@ -1,2 +1,0 @@
-# Calculator
-My First Calculator
